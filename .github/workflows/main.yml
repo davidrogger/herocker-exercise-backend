@@ -20,7 +20,7 @@ jobs:
 
   jest:
     runs-on: ubuntu-latest
-    needs: [eslint]
+    # needs: [eslint]
     steps:
         uses: actions/checkout@v2
       - name: Install dependêncies
