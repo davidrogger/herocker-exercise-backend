@@ -1,4 +1,6 @@
-on: [push, pull_request]
+on:
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
   eslint:
@@ -18,13 +20,13 @@ jobs:
       - name: Verify lint errors
         run: npx eslint .
 
-  jest:
-    runs-on: ubuntu-latest
-    # needs: [eslint]
-    steps:
-        uses: actions/checkout@v2
-      - name: Install dependêncies
-        run: npm install
+  # jest:
+  #   runs-on: ubuntu-latest
+  #   needs: [eslint]
+  #   steps:
+  #       uses: actions/checkout@v2
+  #     - name: Install dependêncies
+  #       run: npm install
 
-      - name: Starting tests
-        run: npm test
+  #     - name: Starting tests
+  #       run: npm test
