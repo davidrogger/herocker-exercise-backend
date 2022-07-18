@@ -23,8 +23,9 @@ jobs:
     needs: [eslint]
 
     steps:
-      - name: Install dependêncies
         uses: actions/checkout@v1
+      - name: Install dependêncies
         run: npm install
+
       - name: Starting tests
         run: npm test
