@@ -1,12 +1,28 @@
 on: [push, pull_request]
 
 jobs:
-  jest:
+  eslint:
     runs-on: ubuntu-latest
     steps:
+      - name: Verify git repository
+        uses: actions/checkout@v2
+
+      - name: Install node with the version
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: install dependecies
+        run: npm install
+
+      - name: Verify lint errors
+        run: npx eslint .
+
+  jest:
+    runs-on: ubuntu-latest
+    needs: [eslint]
+    steps:
       - uses: actions/checkout@v2
-      - name: Use node
-        uses: actions/setup-node@v2
 
       - name: Install Dependencies
         run: npm install
