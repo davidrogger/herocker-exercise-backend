@@ -17,3 +17,14 @@ jobs:
 
       - name: Verify lint errors
         run: npx eslint .
+
+  Evaluator:
+    runs-on: ubuntu-latest
+    needs: [eslint]
+
+    steps:
+      - name: Install dependêncies
+        uses: actions/checkout@v1
+        run: npm install
+      - name: Starting tests
+        run: npm test
